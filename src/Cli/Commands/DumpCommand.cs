@@ -81,6 +81,13 @@ internal static class DumpCommand
                         script = ysc.Script;
                         break;
                     }
+                    case (Game.RDR3, Platform.x64):
+                    {
+                        var ysc = new GameFiles.RDR3.YscFile();
+                        ysc.Load(source, inputFile.Name, keys.GTA5.NgPC);
+                        script = ysc.Script;
+                        break;
+                    }
                     case (Game.MC4, Platform.Xenon):
                     case (Game.GTA4, Platform.x86):
                     {

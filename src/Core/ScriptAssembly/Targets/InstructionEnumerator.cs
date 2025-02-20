@@ -58,4 +58,6 @@ public static class InstructionEnumeratorScriptExtensions
         => new(script.MergeCodePages());
     public static InstructionEnumerator<GTA5.OpcodeV12, GTA5.OpcodeTraitsV12> EnumerateInstructions(this GameFiles.GTA5.Script script)
         => new(script.MergeCodePages());
+    public static InstructionEnumerator<RDR3.OpcodeV16, RDR3.OpcodeTraitsV16> EnumerateInstructions(this GameFiles.RDR3.Script script)
+    => new(script.MergeCodePages());
 }

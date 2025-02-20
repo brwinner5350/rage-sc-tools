@@ -143,6 +143,17 @@ internal static class BuildProjectCommand
                         }
                         break;
 
+                        case GameFiles.RDR3.Script scriptRDR3:
+                        {
+                            tasks.Add(Task.Run(() =>
+                            {
+                                var ysc = new GameFiles.RDR3.YscFile { Script = scriptRDR3 };
+                                var data = ysc.Save(Path.GetFileName(outputFile), keys.GTA5.NgPC);
+                                File.WriteAllBytes(outputFile, data);
+                            }));
+                        }
+                        break;
+
                         case GameFiles.GTA4.Script scriptGTAIV:
                         {
                             tasks.Add(Task.Run(() =>

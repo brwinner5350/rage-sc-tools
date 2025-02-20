@@ -12,6 +12,7 @@ public static class CodeEmitterFactory
             (Game.GTA4, Platform.x86) => new Targets.GTA4.CodeEmitter(createParams.Statics, createParams.Globals),
             (Game.MP3, Platform.x86) => new Targets.MP3.CodeEmitter(createParams.Statics, createParams.Globals),
             (Game.GTA5, Platform.x64) => new Targets.GTA5.CodeEmitter(createParams.Statics, createParams.Globals),
+            (Game.RDR3, Platform.x64) => new Targets.RDR3.CodeEmitter(createParams.Statics, createParams.Globals),
             _ => throw new NotSupportedException($"Target '{target}' is not supported"),
         };
 
