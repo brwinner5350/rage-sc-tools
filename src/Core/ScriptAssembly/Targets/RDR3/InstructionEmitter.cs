@@ -1,7 +1,7 @@
 ﻿namespace ScTools.ScriptAssembly.Targets.RDR3;
 internal class InstructionEmitter : InstructionEmitter<OpcodeV16>
 {
-    private const bool IncludeFunctionNames = false;
+    private const bool IncludeFunctionNames = true;
 
     public InstructionEmitter(IInstructionEmitterFlushStrategy flushStrategy) : base(flushStrategy)
     {
@@ -162,9 +162,9 @@ internal class InstructionEmitter : InstructionEmitter<OpcodeV16>
     public InstructionReference EmitCallIndirect() => EmitInst(OpcodeV16.CALLINDIRECT);
     public InstructionReference EmitSwitch((uint Value, short RelativeOffset)[] cases) // cases will be backfilled later
     {
-        Debug.Assert(cases.Length <= byte.MaxValue, $"Too many SWITCH cases (numCases: {cases.Length})");
+        Debug.Assert(cases.Length <= ushort.MaxValue, $"Too many SWITCH cases (numCases: {cases.Length})");
         EmitOpcode(OpcodeV16.SWITCH);
-        EmitU8((byte)cases.Length);
+        EmitU16((ushort)cases.Length);
         for (int i = 0; i < cases.Length; i++)
         {
             EmitU32(cases[i].Value); // value

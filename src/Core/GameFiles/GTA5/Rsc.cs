@@ -5721,7 +5721,7 @@ public class ResourceBuilder
         void addChildren(IResourceBlock block)
         {
             if (block is IResourceSystemBlock sblock)
-            {       
+            {
                 var references = sblock.GetReferences();
                 foreach (var reference in references)
                 {

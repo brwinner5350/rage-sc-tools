@@ -92,6 +92,7 @@ internal sealed class StatementEmitter : AstVisitor
 
         // check condition
         _C.EmitValue(node.Condition);
+
         _C.EmitJumpIfZero(sem.ExitLabel!);
 
         // body

@@ -357,7 +357,7 @@ public sealed partial class CodeEmitter : ICodeEmitter
         for (int i = 0; i < cases.Length; i++)
         {
             var @case = cases[i];
-            var valueOffset = 2 + i * 6;
+            var valueOffset = 3 + i * 6;
             var labelOffset = valueOffset + 4;
             ReferenceLabel(@case.Semantics.Label!, inst, labelOffset, LabelReferenceKind.Relative, isFunctionLabel: false);
         }

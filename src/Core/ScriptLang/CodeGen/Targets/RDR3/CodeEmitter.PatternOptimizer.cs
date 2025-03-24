@@ -12,6 +12,8 @@ public partial class CodeEmitter
     {
         private readonly IPattern[] patterns = new IPattern[]
         {
+            // temp fix - broken for RDR3
+            /*
             new CombinedStoreOrLoadPattern(OpcodeV16.LOCAL_U8, OpcodeV16.LOCAL_U8_STORE, OpcodeV16.LOCAL_U8_LOAD),
             new CombinedStoreOrLoadPattern(OpcodeV16.LOCAL_U16, OpcodeV16.LOCAL_U16_STORE, OpcodeV16.LOCAL_U16_LOAD),
 
@@ -34,6 +36,7 @@ public partial class CodeEmitter
             new PushConstU8Pattern(),
 
             new IntCompareAndJZPattern(),
+            */
         };
 
         public void Optimize(InstructionBuffer instBuffer)

@@ -206,8 +206,8 @@ internal class Dumper<TOpcode, TOpcodeTraits> : IDumper
                     break;
                 case 'S':
                     {
-                        const byte MaxCases = 32;
-                        byte count = sc.IP(ip);
+                        const ushort MaxCases = 0xFFFF;
+                        ushort count = sc.IP<ushort>(ip);
 
                         sb.Append(' ');
                         sb.Append('[');
@@ -218,7 +218,7 @@ internal class Dumper<TOpcode, TOpcodeTraits> : IDumper
                         {
                             uint c = Math.Min(MaxCases, count);
 
-                            uint currIP = ip + 7;
+                            uint currIP = ip + 8;
                             for (uint i = 0; i < c; i++, currIP += 6)
                             {
                                 uint caseValue = sc.IP<uint>(currIP - 6);
@@ -230,7 +230,7 @@ internal class Dumper<TOpcode, TOpcodeTraits> : IDumper
                                 sb.Append((currIP + offset).ToString("000000"));
                             }
 
-                            ip += 1 + 6u * count;
+                            ip += 3 + 6u * count;
                         }
                         else
                         {
@@ -308,7 +308,7 @@ internal class Dumper<TOpcode, TOpcodeTraits> : IDumper
             }
             else if (EqualityComparer<TOpcode>.Default.Equals(opcode, TOpcodeTraits.SWITCH))
             {
-                s = 6 * (uint)sc.IP(ip + 1) + 2;
+                s = 6 * (uint)sc.IP(ip + 1) + 3;
             }
             else
             {

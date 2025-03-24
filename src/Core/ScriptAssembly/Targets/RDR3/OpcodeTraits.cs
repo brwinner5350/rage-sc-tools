@@ -24,7 +24,7 @@ public abstract class OpcodeTraitsV16 : IOpcodeTraitsRDR3<OpcodeV16>
         var s = opcode switch
         {
             OpcodeV16.ENTER => bytecode[4] + 5,
-            OpcodeV16.SWITCH => 6 * bytecode[1] + 2,
+            OpcodeV16.SWITCH => 6 * bytecode[1] + 3,
             _ => ConstantByteSize(opcode),
         };
 
@@ -209,7 +209,7 @@ public abstract class OpcodeTraitsV16 : IOpcodeTraitsRDR3<OpcodeV16>
         { OpcodeV16.DUP, "" },
         { OpcodeV16.DROP, "" },
         { OpcodeV16.NATIVE, "bbb" },
-        { OpcodeV16.ENTER, "bs" },
+        { OpcodeV16.ENTER, "bs$" },
         { OpcodeV16.LEAVE, "bb" },
         { OpcodeV16.LOAD, "" },
         { OpcodeV16.STORE, "" },
@@ -262,7 +262,7 @@ public abstract class OpcodeTraitsV16 : IOpcodeTraitsRDR3<OpcodeV16>
         { OpcodeV16.GLOBAL_U24_LOAD, "a" },
         { OpcodeV16.GLOBAL_U24_STORE, "a" },
         { OpcodeV16.PUSH_CONST_U24, "a" },
-        { OpcodeV16.SWITCH, "" },
+        { OpcodeV16.SWITCH, "S" },
         { OpcodeV16.STRING, "" },
         { OpcodeV16.STRINGHASH, "" },
         { OpcodeV16.TEXT_LABEL_ASSIGN_STRING, "b" },

@@ -156,10 +156,10 @@ public class YscFile : GameFile, PackedFile
         Buffer.BlockCopy(gfxData, 0, tdata, sysDataSize, gfxDataSize);
 
         var cdata = compress ? ResourceBuilder.Compress(tdata) : tdata;
-        if (name is not null && ngEncrypt.HasValue)
+        /* if (name is not null && ngEncrypt.HasValue)
         {
             Ng.Encrypt(cdata, name, (uint)cdata.Length + 0x10, ngEncrypt.Value);
-        }
+        } */
 
         var dataSize = 16 + cdata.Length;
         var data = new byte[dataSize];
